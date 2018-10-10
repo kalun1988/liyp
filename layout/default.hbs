@@ -15,31 +15,36 @@
     <script type="text/javascript" src="script/vendor/jqueryui/jquery-ui.min.js"></script>
     <script type="text/javascript" src="script/vendor/jqueryui/jquery.ui.touch-punch.min.js"></script>
     <script type="text/javascript" src="script/vendor/jscookie/js.cookie.js"></script>
-    <script type="text/javascript" src="script/main.js"></script>
+    <script type="text/javascript" src="script/lp-main.js"></script>
     <script type="text/javascript" src="script/vendor/bootstrap/js/bootstrap.js"></script>
     <script type="text/javascript" src="script/vendor/pixi/pixi.min.js"></script>
     <!-- use grunt-->
     <!-- use precomplied bootstrap 3-->
     <!-- use precomplied jquery-->
     <script type="text/javascript">
+        var S={};       //global namespace
+        S.sensor = {};  //should change to a more precise name
+        S.devices = [];
+        S.values = [];  //for BLE raw data
+        S.zeros = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];  //for user to set zero of S.values (Hard code 20 params)
+        S.measurments = [];  //for construct all measurments from json
 
-    var S={};       //global namespace
-    S.sensor = {};  //should change to a more precise name
-    S.devices = [];
-    S.values = [];  //for BLE raw data
-    S.zeros = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];  //for user to set zero of S.values (Hard code 20 params)
-    S.measurments = [];  //for construct all measurments from json
-    // if (typeof console != "undefined")
-    //     if (typeof console.log != 'undefined')
-    //         console.olog = console.log;
-    //     else
-    //         console.olog = function() {};
+        //handle mutli language
+        S.current_lang_code = Cookies.get('lang');
+        if(Cookies.get('lang')==null){
+            S.current_lang_code =0;
+        }
+        $.get( "storage/i18n.json",function(data){
+            S.i18n = data;
+            $(document).ready(function(){
+                $(".i18n").each(function() {
+                    $(this).html($(this).data("i18n").split('.').reduce((o,i)=>o[i], S.i18n)[S.current_lang_code]); //0:en, 1:tc, 2:sc
+                });
+            });
+        },'json' );
 
-    // console.log = function(message) {
-    //     console.olog(message);
-    //     $('#log').append('<p>' + message + '</p>');
-    // };
-    // console.error = console.debug = console.info = console.log
+
+       
     </script>
 </head>
 

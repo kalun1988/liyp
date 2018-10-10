@@ -1,0 +1,12 @@
+{
+	"list":[
+		{
+			"id":"gasLaw",
+			"i18n":["Gas Law","氣體方程式","氣體方程式"]
+		},
+		{
+			"id":"em",
+			"i18n":["Magnetic Field with Current Flow","電流磁場","電流磁場"]
+		}
+	]
+}

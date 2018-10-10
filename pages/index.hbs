@@ -4,22 +4,19 @@
             <div class="container">
             	<div class="icon-wrapper">
                 	<img class="app-icon" src="images/app_icon.png"/>
-                	<h3 class="title">Lab in Your Pocket</h3>
+                	<h3 class="title i18n" data-i18n="common.appName"></h3>
                 	<div class="clearfix"></div>
             	</div>
             	<hr>
-                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-					<button id="go_ble_standard" class="hidden btn btn-block btn-success">BLE Standard</button>
-					<button id="go_universal" class="hidden btn btn-block btn-success">Universal Reader</button>
-					<button id="go_environment" class="hidden btn btn-block btn-success">Environmental Experiment</button>
-					<button id="go_gas_law" class="btn btn-block btn-success"> Gas Law</button>
-					<button id="go_em" class="btn btn-block btn-success">Magnetic Field with Current Flow</button>
+                <div id="experiment_button_list" class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                	<!-- append by json-->
 	            </div>
 	            <hr>
 	            <div class="well">
-	            	<p>V1.0.0 Powered by:</p>
-	            	<p>Department of Applied Physics</p>
-	            	<p>Hong Kong Polytechnic University</p>
+	            	<p>V1.0.1</p>
+	            	<span class="i18n" data-i18n="page.index.footer.credit">
+	            	</span>
+	            	<span id="lang_en">English</span> | <span id="lang_zh">繁體中文</span> | <span id="lang_cn">簡體中文</span>
 	            </div>
             </div>
         </div>
@@ -29,35 +26,38 @@
 <script type="text/javascript">
 	
 	$(document).ready(function(){
-		$("#go_ble_standard").click(function(){
-			$.get( "storage/ble_standard.json",function(data){
+
+
+        $.get( "storage/experiments/index.json",function(data){
+            S.experiments = data;
+            for(var item in S.experiments.list){
+                $("#experiment_button_list").append(`
+				<button class="btn btn-block btn-success btn-go-experiment"
+					data-id="${S.experiments.list[item].id}">
+					${S.experiments.list[item].i18n[S.current_lang_code]}
+				</button>
+				`);
+            }
+        },'json' );
+
+        $("#experiment-list").on("click",".btn-go-experiment",function(){
+			$.get( "storage/"+$(this).data("id")+".json",function(data){
 				window.localStorage.setItem("config", JSON.stringify(data));
 				window.location = "lp-experiment-details.html";
 			},'json' );
-		});
-		$("#go_universal").click(function(){
-			$.get( "storage/universal.json",function(data){
-				window.localStorage.setItem("config", JSON.stringify(data));
-				window.location = "lp-experiment-details.html";
-			},'json' );
-		});
-		$("#go_environment").click(function(){
-			$.get( "storage/environment.json",function(data){
-				window.localStorage.setItem("config", JSON.stringify(data));
-				window.location = "lp-experiment-details.html";
-			},'json' );
-		});
-		$("#go_gas_law").click(function(){
-			$.get( "storage/gas_law.json",function(data){
-				window.localStorage.setItem("config", JSON.stringify(data));
-				window.location = "lp-experiment-details.html";
-			},'json' );
-		});
-		$("#go_em").click(function(){
-			$.get( "storage/em.json",function(data){
-				window.localStorage.setItem("config", JSON.stringify(data));
-				window.location = "lp-experiment-details.html";
-			},'json' );
-		});
+        })
+        
+        $("#lang_en").click(function(){
+        	Cookies.set('lang', 0, { expires: 9999 });
+			location.reload();
+        });
+        $("#lang_zh").click(function(){
+        	Cookies.set('lang', 1, { expires: 9999 });
+			location.reload();
+        });
+        $("#lang_cn").click(function(){
+        	Cookies.set('lang', 2, { expires: 9999 });
+			location.reload();
+        });
 	});
 </script>

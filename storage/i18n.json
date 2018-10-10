@@ -1,0 +1,16 @@
+{
+	"common": {
+		"appName": ["Lab In Your Pocket", "隨身實驗室", "隨身實驗室"]
+	},
+	"page": {
+		"index": {
+			"footer":{
+				"credit":[
+					"<p>Department of Applied Physics</p><p>Hong Kong Polytechnic University</p>",
+					"<p>香港理工大學應用物理系</p>",
+					"<p>香港理工大學應用物理系</p>"
+				]
+			}
+		}
+	}
+}
