@@ -1,0 +1,74 @@
+<section id="experiment_nav">
+	<table>
+		<tr>
+			<td class="active">
+				<p class="icon" id="icon_current"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></p>
+				<p class="icon_text">Current</p>
+			</td>
+			<td>
+				<p class="icon" id="icon_record"><span class="glyphicon glyphicon-list-alt" aria-hidden="true"></span></p>
+				<p class="icon_text">Record</p>
+			</td>
+			<td>
+				<p class="icon" id="icon_material"><span class="glyphicon glyphicon-book" aria-hidden="true"></span></p>
+				<p class="icon_text">Material</p>
+			</td>
+<!-- 			<td>
+				<p class="icon" id="icon_setting"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span></p>
+				<p class="icon_text">Setting</p>
+			</td> -->
+		</tr>
+	</table>
+</section>
+<style type="text/css">
+	
+	#experiment_nav{
+		text-align: center;
+	    width: 100%;
+	    background-color: white;
+	    border-width: 2px 0px 0px 0px;
+	    border-color: #969696;
+	    border-style: solid;
+		color:#757575;
+	}
+	#experiment_nav .icon{
+		font-size:26px;
+		padding-top: 6px;
+		margin-bottom:-4px;
+	}
+	#experiment_nav .icon_text{
+		font-size:14px;
+		margin-top:0px;
+	}
+	#experiment_nav .active{
+		border-width: 0px 0px 4px 0px;
+    	border-style: solid;
+    	border-color:#3DA575;
+	}
+
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$("#experiment_nav").find(".icon").click(function(){
+			$("#experiment_nav").find("td").removeClass("active");
+			$(this).parent().addClass("active");
+		});
+
+		$("#icon_record").click(function(){
+			$(".section").addClass("hidden");
+			$("#section_record").removeClass('hidden');
+		 	plot();	//init
+		});
+		$("#icon_current").click(function(){
+			$(".section").addClass("hidden");
+			$("#section_current").removeClass('hidden');
+		});
+		$("#icon_material").click(function(){
+			$(".section").addClass("hidden");
+			$("#section_material").removeClass('hidden');
+			 var rand =Math.floor((Math.random() * 100) + 1);
+			$("#section_material").html("<iframe class='embed-responsive-item' src='"+S.config.manual+"&v="+rand+"' allowfullscreen allowtransparency='true' style='background: #FFFFFF;' ></iframe>");
+		});
+
+	});
+</script>

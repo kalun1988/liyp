@@ -1,0 +1,37 @@
+
+<div id="modal-data-save" class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title i18n" data-i18n="Save Data||數據儲存||數據儲存">Export Data</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+	        <span class="i18n" data-i18n="File Name:||檔案名稱:||檔案名稱:">File Name:</span>
+	        <input type="text" id="filename">
+	        <span>.csv</span>
+		</div>
+		<div>
+			<p class="i18n" data-i18n="Preview Data:||預覧數據||預覧數據">Preview Data:</p>
+			<div id="data-preview">
+				
+			</div>
+		</div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success btn-block i18n" id="confirm-save-btn" data-i18n="Save||儲存||儲存">Export</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<style type="text/css">
+	
+#modal-data-save #data-preview{
+	width:100%;
+}
+#modal-data-save #data-preview table{
+	width:100%;
+}
+</style>

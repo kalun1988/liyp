@@ -1,0 +1,94 @@
+{
+    "navigator": {
+    	"app_name":"AP-Sensor||AP-Sensor||AP-Sensor",
+    	"edit_file":"Edit File||修改存檔||修改存檔",
+    	"basic_functions":"BASIC FUNCTIONS||基本功能||基本功能",
+    	"experiments":"EXPERIMENTS||實驗||實驗"
+    },
+    "sensor-list": {
+        "accelerometer": "Accelerometer||加速計||加速规",
+        "magnetometer": "Magnetometer||磁力儀||磁力儀",
+        "gyroscope": "Gyroscope||陀螺儀||陀螺儀",
+        "photometer": "Photometer||光度計||光度計",
+        "dbmeter": "Sound Level Meter||聲級計||聲級計",
+        "barometer": "Barometer||氣壓計||氣壓計",
+        "sound_analysis": "Sound Analyzer||聲音分析器||聲音分析器",
+        "sound_generator": "Sound Generator||聲音產生器||聲音產生器"
+    },
+    "sensor-common-control":{
+    	"data_mesasurement":"Data Measurement||測量數據||測量數據",
+    	"measuring_time":"Measuring Time||測量時間||測量時間",
+    	"btn_start":"Start||開始||開始",
+    	"btn_stop":"Stop||停止||停止",
+    	"btn_reset":"Reset||重設||重設",
+    	"btn_save":"Save||儲存||儲存"
+    },
+    "sensor-accelerometer":{
+        "reading_name":"Acceleration||加速度||加速度",
+        "y_axis":"Acceleration m/s^2||加速度 m/s^2||加速度 m/s^2"
+    },
+    "sensor-gyroscope":{
+        "reading_name":"Angular Velocity||角速度||角速度",
+        "y_axis":"Angular Velocity rad/s||角速度 rad/s||角速度 rad/s"
+    },
+    "sensor-magnetometer":{
+        "reading_name":"Magnetic Field Strength||磁場強度||磁場強度",
+        "y_axis":"Magnetic Field Strength µT||磁場強度 µT||磁場強度 µT"
+    },
+    "sensor-photometer":{
+        "reading_name":"Illuminance||亮度||亮度",
+        "y_axis":"Illuminance Lux||亮度 Lux||亮度 Lux"
+    },
+    "sensor-dbmeter":{
+        "reading_name":"Decibel||繁體||簡体"
+    },
+    "sensor-barometer":{
+        "reading_name":"Pa||繁體||簡体"
+    },
+    "sensor-sound_soundanalysis":{
+        "reading_name":"Sound Analysis||聲音分析||聲音分析"
+    },
+    "sensor-sound_generator":{
+        "btn_8va":"8va||8va||8va",
+        "btn_8vb":"8vb||8vb||8vb",
+        "btn_stop":"Stop||停止||停止",
+        "btn_reset":"Reset||重設||重設",
+        "btn_increase":"Increase||增加||增加",
+        "btn_decrease":"Decrease||減少||減少",
+        "btn_generate":"Generate||產生||產生",
+        "current_note":"Current Note:||音符||音符",
+        "frequency":"Frequency:||頻率||頻率",
+    	"enter_frequency":"Enter Frequency(Hz):||輸入頻率(Hz):||輸入頻率(Hz):"
+    },
+    "edit-file": {
+        "title":"Edit File||修改||修改",
+        "btn_send":"Send||發送||發送",
+        "btn_cancel":"Cancel||取消||取消",
+        "btn_delete":"Delete||删除||删除",
+        "btn_plot":"Plot||繪圖||繪圖"
+    },
+    "modal-about": {
+        "title":"About||關於||關於",
+        "app_version":"App Version: V3.0.24||應用程式版本: V3.0.24||應用程式版本: V3.0.24",
+        "app_about_line_1":"Developed by||開發:||開發:",
+        "app_about_line_2":"Department of Applied Physics,||香港理工大學||香港理工大學",
+        "app_about_line_3":"The Hong Kong Polytechnic University||應用物理學系||應用物理學系",
+        "app_about_btn_back":"Back||返回||返回"
+    },
+    "modal-save": {
+        "title":"Save Data||數據儲存||數據儲存",
+        "file_name":"File Name:||檔案名稱:||檔案名稱:",
+        "preview_data":"Preview Data:||預覧數據||預覧數據",
+        "btn_save":"Save||儲存||儲存"
+    },
+    "modal-sensor-setting": {
+        "title":"Sensor Setting||傳感器設定||傳感器設定",
+        "sampling_rate":"Sampling Rate||取樣率||取樣率",
+        "btn_save":"Save||儲存||儲存"
+    },
+    "modal-alert": {
+        "message":"Confirm return to menu?||確認返回主菜單||確認返回主菜單",
+        "btn_yes":"Yes||是||是",
+        "btn_no":"No||否||否"
+    }
+}

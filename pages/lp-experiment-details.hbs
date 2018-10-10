@@ -1,0 +1,97 @@
+{{> lp-nav}}
+
+<section id="experiment" class="container-full">
+        <div class="app">
+			{{> lp-experiment-nav}}
+            <div class="container">
+				{{> lp-experiment-hidden-control}}
+                <button id="btn-take-sample" class="btn btn-block btn-success btn-lg">Record</button>
+				{{> lp-experiment-section-current}}
+				{{> lp-experiment-section-record}}
+				{{> lp-experiment-section-material}}
+            </div>
+        </div>
+</section>
+{{> lp-modal-data-save}}
+{{> lp-modal-init}}
+<script type="text/javascript" src="script/vendor/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="script/vendor/flot/jquery.flot.time.js"></script>
+<script type="text/javascript" src="script/lp-_savedata.js"></script>
+<script type="text/javascript" src="script/lp-FileManager.js"></script>
+<script type="text/javascript" src="script/lp-DataManager.js"></script>
+<script type="text/javascript" src="script/lp-connectBle.js"></script>
+<script type="text/javascript">
+
+	S.experiment = {};
+	S.config = JSON.parse(window.localStorage.getItem("config"));	
+	for(var d in S.config.devices){
+		S.devices.push(S.config.devices[d].name);
+		for(var m in S.config.devices[d].measurments){
+			S.measurments.push(S.config.devices[d].measurments[m]);
+		}
+	}
+	//construct measurments
+	S.data =[];
+	S.dataWithTime =[];
+	S.auto = true;
+
+
+	S.sensor.dm = new S.DataManager();
+
+	function watch(values){		//used by ble subscribe success
+		var d = new Date();
+		var t = d.getTime();
+		S.sensor.dm.watch({
+                "a0": values[0],
+                "a1": values[1],
+                "a2": values[2],
+                "a3": values[3],
+                "a4": values[4],
+                "a5": values[5],
+                "a6": values[6],
+                "a7": values[7],
+                "m": 0,
+                "t": t
+            });
+        render({
+            "a0": S.sensor.dm.current.a0.display,
+            "a1": S.sensor.dm.current.a1.display,
+            "a2": S.sensor.dm.current.a2.display,
+            "a3": S.sensor.dm.current.a3.display,
+            "a4": S.sensor.dm.current.a4.display,
+            "a5": S.sensor.dm.current.a5.display,
+            "a6": S.sensor.dm.current.a6.display,
+            "a7": S.sensor.dm.current.a7.display
+        });
+	}
+    function render(display) {
+    	// console.log(display);
+        $(".value-read").eq(0).html(display.a0);
+        $(".value-read").eq(1).html(display.a1);
+        $(".value-read").eq(2).html(display.a2);
+        $(".value-read").eq(3).html(display.a3);
+        $(".value-read").eq(4).html(display.a4);
+        $(".value-read").eq(5).html(display.a5);
+        $(".value-read").eq(6).html(display.a6);
+        $(".value-read").eq(7).html(display.a7);
+    }
+	$(document).ready(function(){
+
+		//modal init
+		$("#modal-init").show();
+	    //load label from config
+	    //both section-current and section-record
+	});
+
+
+</script>
+
+
+<style type="text/css">
+	body{
+		background-color: #3cbf78;
+		color:white;
+	}
+
+
+</style>

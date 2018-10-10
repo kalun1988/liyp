@@ -1,0 +1,144 @@
+<section id="section_record" class="section hidden">
+	<section id="graph" class="container-full">
+
+	    <div id="slider" style="position:absolute;width:100%;height:100%;top:0px;right:0px;"></div>
+	    <div id="placeholder" style="width:90%;margin-left:10%;height:300px"></div>
+	    <div id="legendContainer"></div>
+	    <p id="y_axis" class="i18n" data-i18n="{{y_axis}}"></p>
+	    <div id="legend">
+	    </div>
+	</section>
+
+     <div id="data-results">
+    	<table class="table">
+			  <thead>
+			  	<!-- dynamic -->
+			  </thead>
+			  <tbody>
+			  	<!-- dynamic -->
+			  </tbody>
+			</table>
+    </div> 
+    <button class="btn btn-success btn-block" id="save-btn">Export</button>
+    <div id="store-data-results" class="hidden">
+
+    	<table class="data-table-head">
+		    <tr>
+		      <td><div class="btn-remove-data"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></td>
+		    </tr>
+		</table>
+    	<table class="data-table">
+		    <tr>
+		      <td><div class="btn-remove-data"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></td>
+		    </tr>
+		</table>
+    </div>
+</section>
+
+
+
+<script type="text/javascript">
+
+	$(document).ready(function(){
+
+		//dynamic make temp container start
+		//generate th
+        $html = "<tr>";
+        for(var i in S.measurments){
+        	$html +="<th scope='col'><p class='value_label_"+i+"'>"+S.measurments[i].name+"</p></th>";
+        }
+        $html += "</tr>";
+        $("#data-results").find("thead").append($html);
+
+
+        //generate td
+        $html = "";
+        for(var i in S.measurments){
+        	$html +="<td class='val-"+i+"'></td>";
+        }
+        $("#store-data-results").find(".data-table").find("tr").prepend($html);
+
+
+		//dynamic make temp container end
+
+
+        $("#save-btn").click(function() {
+            if (!$(this).hasClass("disabled")) {
+                $('#modal-data-save').modal('show');
+            }
+        });
+
+
+		
+		$("#btn-take-sample").click(function(){
+
+			$temp = $("#store-data-results").find(".data-table").find("tr").clone();
+			for(i in S.values){
+				$temp.find(".val-"+i).html(S.values[i]);
+			}
+			$("#data-results").find("table").find("tbody").append($temp);
+			insertData(S.values); 
+			plot();
+		});
+
+		
+
+		$("body").on("click",".btn-remove-data",function(){
+			var $this = $(this);
+			var r = confirm("Confirm Remove Data Point?");
+			if (r) {
+				console.log($(".btn-remove-data").index($this));
+				$this.parent().parent().remove();
+				removeData($(".btn-remove-data").index($this));
+				plot();
+			}
+		});
+		$("#placeholder").click(function(){
+                var set_value =0;
+                set_value = prompt("x axis min", S.config.include.graph_details.x_min);
+                S.config.include.graph_details.x_max = parseInt(set_value);
+
+                set_value = prompt("x axis max", S.config.include.graph_details.x_max);
+                S.config.include.graph_details.x_max = parseInt(set_value);
+
+                set_value = prompt("y axis min", S.config.include.graph_details.y_min);
+                S.config.include.graph_details.y_min = parseInt(set_value);
+
+                set_value = prompt("y axis max", S.config.include.graph_details.y_max);
+                S.config.include.graph_details.y_max = parseInt(set_value);
+                plot();
+		});
+
+	});
+	//Graph Plotting
+	function insertData(values){
+		S.data.push(values);
+		var temp_array =[Date.now()];
+		for(var i in values){
+			temp_array.push(values[i]);
+		}
+		S.dataWithTime.push(temp_array);
+	}
+	function removeData(index){
+		S.data.splice(index, 1);
+		S.dataWithTime.splice(index, 1);
+	}
+	function plot(){
+		$.plot($("#placeholder"), [ S.data ], 
+			{ 
+				xaxis: { 
+					min: S.config.include.graph_details.x_min,
+					max: S.config.include.graph_details.x_max
+				} ,
+				yaxis: { 
+					min: S.config.include.graph_details.y_min,
+					max: S.config.include.graph_details.y_max
+				} ,
+			    series: {
+			        lines: { show: false },
+			        points: { show: true }
+			    }
+			});		
+	}
+
+</script>

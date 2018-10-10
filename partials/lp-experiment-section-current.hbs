@@ -1,0 +1,53 @@
+<section id="section_current" class="section">
+	
+    <section id="result-text">
+    </section>
+    <section id="result-text-store" class="hidden">
+        <div class="content">
+            <button type="button" class="btn btn-primary btn-xs btn-sz">
+                <span class="glyphicon">&#xe019;</span>Zero</button>
+    		<span class="value_label"></span>
+            <span class="value-read"></span>
+            <br>
+        </div>
+    </section>
+    <div class="command_button_group">
+            <!-- Next: move to config driven-->
+            <button type="button" class="btn btn-primary hidden" id="btn_sz">Set Zero</button>
+            <button type="button" class="btn btn-primary hidden" id="btn_fon">Fan On</button>
+            <button type="button" class="btn btn-primary hidden" id="btn_foff">Fan Off</button>
+    </div>
+	<section id="time_graph" class="container-full">
+
+	    <div id="time_slider" style="position:absolute;width:100%;height:100%;top:0px;right:0px;"></div>
+	    <div id="time_placeholder" style="width:90%;margin-left:10%;height:200px"></div>
+	    <div id="time_legendContainer"></div>
+	    <p id="time_y_axis" class="i18n" data-i18n="{{y_axis}}"></p>
+	    <div id="time_legend">
+	    </div>
+	</section>
+    <p class="ble_raw_data hidden"></p>
+</section>
+
+<style type="text/css">
+	
+	#result-text .value_label{
+		font-size:14px;
+	}
+	#result-text .value-read{
+		font-size:26px;
+		font-weight: bold;
+	}
+	
+	#time_graph{
+		position:relative;
+	}
+    input, textarea{
+        color:black;
+    }
+</style>
+<script type="text/javascript">
+	
+</script>
+
+<script type="text/javascript" src="script/lp-section-current.js"></script>

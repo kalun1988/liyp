@@ -1,0 +1,41 @@
+{
+	"name":"em",
+	"title":"Magnetic Field with Current Flow",
+	"youtube":"https://www.youtube.com/embed/d6Gjw71VAU4",
+	"manual":"https://docs.google.com/document/d/1K9nal90snZ-7fNJ1mVJsI8VUbtENMVfqy66WpMniVWU/edit?usp=sharing",
+	"devices":[{
+		"name":"Hall_Sensor",   
+		"prefilled_address":"30:AE:A4:XX:XX:XX",
+		"read_characteristic":"1110-0001",
+		"write_characteristic":"1110-0002",
+		"decode":"<>data_0;",
+		"measurments":[{
+			"name":"B-field",
+			"unit":"Gauss"
+		}]
+	},{
+		"name":"Current_Sensor",
+		"prefilled_address":"30:AE:A4:XX:XX:XX",
+		"read_characteristic":"1110-0001",
+		"write_characteristic":"1110-0002",
+		"decode":"<>data_1;",
+		"measurments":[{
+			"name":"Current",
+			"unit":"mA"
+		}]
+	}],
+	"read_characteristic":"1110-0001",
+	"write_characteristic":"1110-0002",
+	"decode":"<>data_1;",
+	"include":{
+		"graph":true,
+		"graph_details":{
+			"x_axis":"B-field Gauss",
+			"x_min":0,
+			"x_max":40,
+			"y_axis":"Current mA",
+			"y_min":0,
+			"y_max":1000
+		}
+	}
+}

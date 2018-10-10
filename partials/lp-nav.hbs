@@ -1,0 +1,31 @@
+<section id="nav" class="container-full">
+    <table>
+        <tr>
+            <td class="row-1">
+                <img src="images/ap_logo.jpg" class="icon" />
+                <span class="display-4">Lab in Your Pocket</span>
+            </td>
+            <!-- <td class="row-2">
+                <p id="app-name" class="i18n" data-i18n="{{ i18n.navigator.app_name }}"></p>
+            </td>
+            <td class="row-3">
+                <button id="edit-btn" data-toggle="modal" data-target="#modal-about">
+                    <img src="images/ic_folder.png" class="icon-1" />
+                </button>
+                 <button id="edit-btn" class="i18n" data-i18n="{{ i18n.navigator.edit_file }}"></button> 
+            </td>
+            <td class="row-4">
+                <button id="about-btn" data-toggle="modal" data-target="#modal-about">
+                    <img src="images/ic_action_about.png" class="icon-1" />
+                </button>
+            </td> -->
+        </tr>
+    </table>
+</section>
+<script type="text/javascript">
+$(document).ready(function() {
+    $("#edit-btn").click(function() {
+        window.location = "edit-file.html";
+    });
+});
+</script>

@@ -1,0 +1,233 @@
+
+<section id="experiment-gas-law" class="container-full">
+	
+        <div class="app">
+            <div class="container">
+                <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+                  
+                    
+
+                    <div id="debug" class="hidden">
+
+	                    <button id="btn-initialize-ble" class="active btn btn-block btn-success">Initialize Bluetooth</button>
+	                    <button id="btn-request-location" class="hidden btn btn-block btn-success">Request Location</button>
+	                    <button id="btn-request-permission" class="hidden btn btn-block btn-success">Request Permission</button>
+	                    <button id="btn-start-scan" class="hidden btn btn-block btn-success">Start Scan</button>
+	                    <button id="btn-stop-scan" class="hidden btn btn-block btn-success">Stop Scan</button>
+		                <div id="devices" class="row">
+		                </div>
+		                <div id="services" class="row">
+		                </div>
+		                <div id="control" class="row">
+
+		                    <input type="text" id="field-write" />
+		                    <button id="btn-write" class="btn btn-block btn-info">Write</button>
+		                    <button id="btn-read" class="btn btn-block btn-info">Read</button>
+		                </div>
+		            </div>
+	            </div>
+                <button id="btn-take-sample" class="btn btn-block btn-info btn-lg"><span class="glyphicon glyphicon-pushpin" aria-hidden="true"></span></button>
+
+
+				<section id="graph" class="container-full">
+
+				    <div id="slider" style="position:absolute;width:100%;height:100%;top:0px;right:0px;"></div>
+				    <div id="placeholder" style="width:90%;margin-left:10%;height:300px"></div>
+				    <div id="legendContainer"></div>
+				    <p id="y_axis" class="i18n" data-i18n="{{y_axis}}"></p>
+				    <div id="legend">
+				    </div>
+				</section>
+
+
+                <div id="data-results">
+                	<table class="table table-striped">
+						  <thead>
+						    <tr>
+						      	<th scope="col">
+						      		<p>Temperature °c</p>
+						      		<p id="value-read-1"></p>
+						  		</th>
+						      	<th scope="col">
+						      		<p>Pressure kPa</p>
+						      		<p id="value-read-2"></p>
+						  		</th>
+						      <th scope="col"></th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  </tbody>
+						</table>
+                </div>
+                <div id="temp" class="hidden">
+                	<div class='col-xs-6 card text-white card-service'>
+						<div class='card-header bg-primary'></div>	
+						<div class='card-body text-white bg-info'>
+						</div>
+                	</div>
+                	<button class='btn btn-success btn-characteristic'></button>
+
+
+                	<table class="data-table">
+					    <tr>
+					      <td class="val-1"></td>
+					      <td class="val-2"></td>
+					      <td><div class="btn-remove-data"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div></td>
+					    </tr>
+					</table>
+                </div>
+            </div>
+        </div>
+</section>
+
+<div id="modal-init" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="instruction-circle">
+        	<img src="images/lp/f1.gif"/>
+        </div>
+        <br />
+        <p id="state">Turn on the Sensor first.</p>
+        <br>
+        <button id="btn-config" class='btn btn-info'>Configuration</button>
+        <!-- <button id="btn-init" class='btn btn-success'>Connect</button> -->
+        <button id="btn-init" class="btn btn-success">Start</button>
+        <button id="btn-debug" class="btn btn-danger">Debug Mode</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script type="text/javascript" src="script/vendor/flot/jquery.flot.js"></script>
+<script type="text/javascript" src="script/lp-ble.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		S.config = JSON.parse(window.localStorage.getItem("config"));		//from server and local
+		S.data =[];
+		S.auto = true;
+		// $("#btn-server").click(function(){
+		// 	cordovaHTTP.get("http://moonbathing.club/temp/gas_law.json", {}, {}, function(response) {
+		// 	    console.log(response);
+		// 	    S.config = JSON.parse(response.data);
+		// 	}, function(response) {
+		// 	    console.error(response.error);
+		// 	});
+		// });
+		$("#btn-debug").click(function(){
+			S.auto = false;
+			$("#debug").removeClass("hidden");
+
+		});
+
+		$("#btn-take-sample").click(function(){
+			alert("here_gas");
+			$temp = $("#temp").find(".data-table").find("tr").clone();
+			$temp.find(".val-1").html(S.value1);
+			$temp.find(".val-2").html(S.value2);
+			$("#data-results").find("table").find("tbody").append($temp);
+			insertData(S.value1,S.value2);
+			plot();
+		});
+
+		$("body").on("click",".btn-remove-data",function(){
+			var $this = $(this);
+			var r = confirm("Confirm Remove Data Point?");
+			if (r) {
+				console.log($(".btn-remove-data").index($this));
+				$this.parent().parent().remove();
+				removeData($(".btn-remove-data").index($this));
+				plot();
+			}
+		});
+
+		plot();	//init
+
+
+		//modal init
+
+		$("#modal-init").show();
+		$("#btn-config").click(function(){
+			$("#modal-init").hide();
+		});
+
+	});
+
+	//Graph Plotting
+	function insertData(value1, value2){
+		S.data.push([value1, value2]);
+	}
+	function removeData(index){
+		S.data.splice(index, 1);
+	}
+	function plot(){
+		$.plot($("#placeholder"), [ S.data ], 
+			{ 
+				yaxis: { 
+					min: 80,
+					max: 120
+				} ,
+			    series: {
+			        lines: { show: false },
+			        points: { show: true }
+			    }
+			});		
+	}
+
+</script>
+
+
+<style type="text/css">
+	#btn-take-sample{
+	    border-radius: 50%;
+	    width: 60px;
+	    height: 60px;
+	    position: fixed;
+	    bottom: 20px;
+	    right:20px;
+	    z-index:10;
+	    font-size:30px;
+	}
+	#data-results{
+		height:200px;
+		overflow: scroll;
+	}
+
+/*full screen modal*/
+.modal-dialog {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
+  height: auto;
+  min-height: 100%;
+  border-radius: 0;
+}
+
+
+	#modal-init .modal-content{
+		background-color:#0D6697;
+		color:white;
+		text-align: center;
+		padding-top:50px;
+	}
+	.instruction-circle{
+		margin: 0 auto;
+	    width: 300px;
+	    height: 300px;
+	    background-color: #52cbee;
+	    border-radius: 50%;
+	    position: relative;
+	    overflow:hidden;
+	}
+	.instruction-circle img{
+		max-width: 300px;
+		position: absolute;
+		left: 0px;
+	}
+
+</style>

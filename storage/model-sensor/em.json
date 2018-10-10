@@ -1,0 +1,19 @@
+{
+	"data-source-id":"ap_current_sensor",
+	"service":{
+		"uuid":1110,
+		"command-characteristic":{
+			"uuid":0001,
+			"commands":[
+				{
+					"command":"rd",
+					"description":"start to read data"
+				}
+			]
+		}
+
+	},
+	"read_characteristic":"1110-0001",
+	"write_characteristic":"1110-0002",
+	"decode":"<>data_1,data2"
+}

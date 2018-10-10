@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<experiment>
+	<graph>
+		<x-axis>
+			<data-source-id>ap_current_sensor</data-source-id>
+			<label>Current</label>
+			<unit>A</unit>
+			<max>10</max>
+			<min>0.1</min>
+		</x-axis>
+		<y-axis>
+			<data-source-id>ap_magnetic_sensor</data-source-id>
+			<label>Magnetic Field</label>
+			<unit>uT</unit>
+			<max>10</max>
+			<min>0.1</min>
+		</y-axis>
+	</graph>
+	<dataTable>
+		<column>
+			<data-id>1</data-id>
+			<label>Current(A)</label>
+		</column>
+		<column>
+			<data-id>2</data-id>
+			<label>Magnetic Field(uT)</label>
+		</column>
+		<allow>
+			<removeDataPoint>true</removeDataPoint>
+			<export>true</export>
+		</allow>
+	</dataTable>
+</experiment>

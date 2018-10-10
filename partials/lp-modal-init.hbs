@@ -1,0 +1,89 @@
+<div id="modal-init" class="modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+      	<h3 class="title"></h3>
+<!--         <hr>
+        <div id="youtube">
+        </div> -->
+        <hr>
+        <div id="state">
+	        <ol>
+	        	<li>Connect sensor(s) with power supply</li>
+	        	<li>Enter sensor(s) address (printed on controllers)</li>
+	        	<li>Press "Connect" to receive data from sensor(s)</li>
+	        </ol>
+	        <br>
+        	<button class="btn btn-success" id="btn-material">Lab Manual</button>
+        </div>
+        <hr>
+        <table class="table table-sm" id="device-list">
+			  <thead>
+			    <tr>
+			      <th scope="col">Device</th>
+			      <th scope="col">Register</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  </tbody>
+			</table>
+
+		    <div id="store-ble-config" class="hidden">
+		    	<div class='col-xs-6 card text-white card-service'>
+					<div class='card-header bg-primary'></div>	
+					<div class='card-body text-white bg-info'>
+					</div>
+		    	</div>
+		    	<button class='btn btn-success btn-characteristic'></button>
+		    </div>
+		    <div id="store-device-list" class="hidden">
+		    	<table class="data-table">
+				    <tr class="table-success">
+				      <th scope="row" class="device-name"></th>
+				      <td>
+		        		<button class="btn btn-primary btn-xs btn_register_by_enter_address" type="button">Enter address</button></td>
+				    </tr>
+				</table>
+		    </div>
+			<div id="address_list"></div>
+
+      	<!-- <div class="btn-group" role="group" aria-label="register"> -->
+	        <!-- <button class="btn btn-success btn-xs btn_register_by_scan_qr" type="button">Scan QR code</button> -->
+
+		<!-- </div> -->
+        <button class="btn btn-success" id="btn-start-connect">Connect</button>
+        <!-- <button id="btn-debug" class="btn btn-danger">Debug Mode</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<style type="text/css">
+	
+
+</style>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//construct modal init device list from config
+		for(var d in S.config.devices){
+			var $temp = $("#store-device-list").find("tr").clone();
+			$temp.find(".device-name").html(S.config.devices[d].name);
+			$temp.find(".btn_register_by_enter_address").data("device-name",S.config.devices[d].name);
+			$("#device-list").find("tbody").append($temp);
+		}
+
+		//$("#youtube").html("<iframe width='320' height='240' src='"+S.config.youtube+"' frameborder='0' allow='autoplay; encrypted-media' allowfullscreen></iframe>");		
+
+		$("#btn-material").click(function(){
+			 var rand =Math.floor((Math.random() * 100) + 1);
+			window.open(S.config.manual+"&v="+rand);
+		});
+		$("#btn-debug").click(function(){
+			S.auto = false;
+			$("#debug").removeClass("hidden");
+			$("#modal-init").hide();
+		});
+
+		$("#modal-init").find(".title").html(S.config.title);
+	});
+</script>

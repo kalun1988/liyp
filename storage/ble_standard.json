@@ -1,0 +1,50 @@
+{
+	"name":"BLEStandard",
+	"devices":[{
+		"name":"MyESP32",
+		"prefilled_address":"30:AE:A4:73:FF:BE",
+		"read_characteristic":"beb5483e-36e1-4688-b7f5-ea07361b26a8",
+		"write_characteristic":[
+			"beb54831-36e1-4688-b7f5-ea07361b26a8",
+			"beb54832-36e1-4688-b7f5-ea07361b26a8",
+			"beb54833-36e1-4688-b7f5-ea07361b26a8",
+			"beb54834-36e1-4688-b7f5-ea07361b26a8",
+			"beb54835-36e1-4688-b7f5-ea07361b26a8",
+			"beb54836-36e1-4688-b7f5-ea07361b26a8"
+			],
+		"decode":"data,data,data,data,data,data",
+		"measurments":[{
+			"name":"A0",
+			"unit":"unit"
+		},{
+			"name":"A1",
+			"unit":"unit"
+		},{
+			"name":"A2",
+			"unit":"unit"
+		},{
+			"name":"A3",
+			"unit":"unit"
+		},{
+			"name":"A4",
+			"unit":"unit"
+		},{
+			"name":"A5",
+			"unit":"unit"
+		}]
+	}],
+	"read_characteristic":"beb5483e-36e1-4688-b7f5-ea07361b26a8",
+	"write_characteristic":"beb5483e-36e1-4688-b7f5-ea07361b26a8",
+	"decode":"ms,data,data,data,data,data,data",
+	"include":{
+		"graph":true,
+		"graph_details":{
+			"x_axis":"Temperature °C",
+			"x_min":0,
+			"x_max":120,
+			"y_axis":"Pressure kPa",
+			"y_min":0,
+			"y_max":120
+		}
+	}
+}

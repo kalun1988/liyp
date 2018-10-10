@@ -1,0 +1,600 @@
+$green-1:#669900;
+$green-2:#8ab13d;
+$green-3:#436500;
+$white:#ffffff;
+$yellow-1:#fffdd8;
+$font-1:15px;
+$font-2:12px;
+#log {
+    display: none;
+}
+
+input[type="button"],
+button {
+    outline: none;
+}
+
+input[type="button"]::-moz-focus-inner,
+button::-moz-focus-inner {
+    border: 0;
+}
+
+.dummy {
+    display: none;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    background-color: $white;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container-full {
+    margin: 0 auto;
+    width: 100%;
+    table {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+.icon-1 {
+    width: 30px;
+    height: 30px;
+}
+#nav {
+    height: 8%;
+    background-color: $green-1;
+    .row-2 {
+        width: 45%;
+    }
+    .row-3 {
+        width: 25%;
+    }
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        margin-right: 5px;
+        margin-top: 8px; //control navigator height
+        margin-bottom: 8px; //control navigator height
+    }
+    .icon-1 {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        margin-right: 20px;
+    }
+    #app-name {
+        font-size: $font-1;
+        font-weight: bold;
+        margin: 0px;
+        margin-left: 2px;
+    }
+    #edit-btn {
+        font-size: $font-2;
+        font-weight: bold;
+        margin-top: 1px;
+        height: 40px;
+        line-height: 40px;
+    }
+    #about-btn {}
+}
+
+#sub-nav {
+    background-color: $green-2;
+    font-size: $font-2;
+    font-weight: bold;
+    margin: 0px;
+    height: 7%;
+    .text {
+        height: 35px;
+    }
+    .row-1 {
+        text-align: center;
+        width: 50%;
+        p {
+            margin-top: 10px;
+        }
+    }
+    .row-2 {
+        text-align: center;
+        width: 50%;
+        p {
+            margin-top: 10px;
+        }
+    }
+    .indicate {
+        height: 8px;
+        background-color: $green-2;
+        .active {
+            background-color: $green-3;
+        }
+    }
+}
+
+
+/* buttons */
+
+.control-btn-group {
+    text-align: center;
+}
+
+button {
+    border: 0;
+    /*width:40%;*/
+    margin: 0 auto;
+    height: 30px;
+    background-color: $green-1;
+    text-align: center;
+}
+
+.control-btn {
+    /*width:40%;*/
+    margin: 0 auto;
+    height: 30px;
+    background-color: $green-1;
+    text-align: center;
+}
+
+#sensor-list,
+#experiment-list {
+    
+    tr {
+        border-bottom: 1px solid #CCC;
+    }
+    .icon {
+        width: 50px;
+        height: 50px;
+        margin-left: 20px;
+        margin-right: 5px;
+        margin-top: 2px; //control navigator height
+        margin-bottom: 2px; //control navigator height
+    }
+    .row-1 {
+        width: 60px;
+    }
+    .row-2 {
+        p {
+            font-size: $font-1;
+            margin: 0px;
+        }
+    }
+}
+
+#sensor-nav,
+#common-nav,
+#experiment-nav {
+    background-color: $green-1;
+    height: 50px;
+    .row-icon {
+        width: 10%;
+    }
+    .row-2 {
+        width: 45%;
+    }
+    .row-3 {
+        width: 25%;
+    }
+    .back-btn {
+        padding: 0px;
+        height: 100%;
+    }
+    .icon {
+        width: 30px;
+        height: 30px;
+        margin-left: 10px;
+        margin-right: 5px;
+        margin-top: 8px; //control navigator height
+        margin-bottom: 8px; //control navigator height
+    }
+    .sensor-name {
+        font-size: $font-1;
+        font-weight: bold;
+        margin: 0px;
+        margin-left: 2px;
+    }
+    #edit-btn {
+        font-size: $font-2;
+        font-weight: bold;
+        margin-top: 1px;
+    }
+    #about-btn {}
+    #setting-btn {
+        display: none;
+    }
+}
+
+.sensor-main {
+    background-color: $yellow-1;
+}
+
+.experiment-main {
+    background-color: $yellow-1;
+}
+
+.modal-title {
+    color: #60c6ea;
+}
+
+.modal-header {
+    border-bottom: 1px solid #60c6ea;
+}
+
+#modal-data-save {
+    #data-preview {
+        width: 80%;
+        margin: 0 auto;
+        height: 300px;
+        overflow: scroll;
+    }
+}
+
+#sensor-status {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: red;
+}
+
+#sensor-status.on {
+    background-color: green;
+}
+
+#edit-file {
+    height: 92%;
+    #file-list {
+        width: 320px;
+        #table {
+            tr {
+                height: 20px;
+            }
+            td {
+                vertical-align: top;
+                height: 20px;
+            }
+            .btn_checkbox {
+                width: 40px;
+            }
+            .filename {
+                width: 180px;
+                font-weight: bold;
+                div {
+                    width: 180px;
+                    overflow: scroll;
+                }
+            }
+            .datetime {
+                width: 180px;
+                font-color: #888;
+            }
+            .plot_wrapper {
+                width: 100px;
+            }
+        }
+    }
+    .control-btn-group {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+}
+
+
+/*About Modal*/
+
+#modal-about {
+    #logo_container {
+        text-align: center;
+    }
+    #about_logo {
+        width: 150px;
+    }
+}
+
+
+/*Graph*/
+
+#graph {
+    position: relative;
+    #y_axis {
+        -webkit-transform: rotate(270deg);
+        -moz-transform: rotate(270deg);
+        -o-transform: rotate(270deg);
+        -ms-transform: rotate(270deg);
+        transform: rotate(270deg);
+        position: absolute;
+        top: 160px;
+    }
+    #legend {
+        position: absolute;
+        bottom: 20px;
+        right: 0px;
+    }
+    .legend_block {
+        display: inline-block;
+        width: 15px;
+        height: 15px;
+    }
+    #legend_x {
+        background-color: red;
+    }
+    #legend_y {
+        background-color: blue;
+    }
+    #legend_z {
+        background-color: green;
+    }
+    #legend_m {
+        background-color: black;
+    }
+    .ui-slider-vertical{
+        width:100% !important;
+    }
+    .ui-slider-handle{
+        width:45px;
+        right:0px;
+        left:auto;
+        opacity:0.5;
+    }
+    .ui-slider-handle::after { 
+    content: "ZOOM";
+    }
+}
+
+#legendContainer {
+    width: 200px;
+    height: 50px;
+}
+
+
+/*analog meter*/
+
+#analog-meter {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    background-color: #fffdd8;
+    overflow:hidden;
+    .bg {
+        width: 300px;
+        height: 300px;
+        display: block;
+        border-radius: 50%;
+        border: 2px solid #505050;
+        float: left;
+    }
+    .blocker {
+        width: 300px;
+        height: 300px;
+        display: block;
+        border-radius: 50%;
+        background-color: #fffdd8;
+        top: 170px;
+        position: absolute;
+    }
+    .marker {
+        position: absolute;
+        width: 50px;
+        height: 300px;
+        left: unquote("-webkit-calc(50% - 25px)");
+        padding-top: 10px;
+        text-align: center;
+        .main-line {
+            width: 2px;
+            height: 20px;
+            background-color: #505050;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .precise-line {
+            width: 1px;
+            height: 100%;
+            margin: 0 auto;
+            top: 0px;
+            left: 0;
+            position: absolute;
+            right: 0;
+            background-image: linear-gradient( to bottom, transparent, transparent 5%, #505050 5%, #505050 10%, transparent 10%);
+        }
+        .precise-line-1 {
+            transform: rotate(1*4.8deg);
+        }
+        .precise-line-2 {
+            transform: rotate(2*4.8deg);
+        }
+        .precise-line-3 {
+            transform: rotate(3*4.8deg);
+        }
+        .precise-line-4 {
+            transform: rotate(4*4.8deg);
+        }
+    }
+    #marker-0 {
+        transform: rotate(-5*24deg);
+    }
+    #marker-1 {
+        transform: rotate(-4*24deg);
+    }
+    #marker-2 {
+        transform: rotate(-3*24deg);
+    }
+    #marker-3 {
+        transform: rotate(-2*24deg);
+    }
+    #marker-4 {
+        transform: rotate(-1*24deg);
+    }
+    #marker-5 {
+        transform: rotate(0*24deg);
+    }
+    #marker-6 {
+        transform: rotate(1*24deg);
+    }
+    #marker-7 {
+        transform: rotate(2*24deg);
+    }
+    #marker-8 {
+        transform: rotate(3*24deg);
+    }
+    #marker-9 {
+        transform: rotate(4*24deg);
+    }
+    #marker-10 {
+        transform: rotate(5*24deg);
+    }
+    .pointer {
+        position: absolute;
+        width: 50px;
+        height: 300px;
+        left: unquote("-webkit-calc(50% - 25px)");
+        transform: rotate(5*24deg);
+        -moz-transition: all 1s ease;
+        -webkit-transition: all 1s ease;
+        -o-transition: all 1s ease;
+        transition: all 1s ease;
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #3d3d3d;
+            margin: 0 auto;
+            margin-top: -webkit-calc(-50% - 5px);
+            border: 4px solid;
+            border-color: #ba0101;
+        }
+    }
+    .value{
+        position: absolute;
+        width: 100px;
+        text-align: center;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 30px;
+        margin-top: 200px;
+    }
+    .arrow-up {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 150px solid #ba0101;
+        left: -webkit-calc(50% - 10px);
+    }
+    .pointer {
+        animation-duration: 3s;
+    }
+}
+
+
+
+
+/*lg start here*/
+
+
+/*experiment-list*/
+
+
+
+#experiment-list{
+    .app-icon{
+        width:64px;
+        float:left;
+        margin-top:15px;
+    }
+    .title{
+        float:left;
+    }
+}
+
+
+/*modal-init*/
+
+#modal-init{
+    .modal-dialog {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-y:scroll;
+    }
+
+    .modal-content {
+      height: auto;
+      min-height: 100%;
+      border-radius: 0;
+    }
+
+
+    .modal-content{
+        background-color:#0D6697;
+        color:white;
+        padding-top:10px;
+    }
+    .instruction-circle{
+        margin: 0 auto;
+        width: 300px;
+        height: 300px;
+        background-color: #52cbee;
+        border-radius: 50%;
+        position: relative;
+        overflow:hidden;
+    }
+    .instruction-circle img{
+        max-width: 300px;
+        position: absolute;
+        left: 0px;
+    }
+    #youtube{
+        iframe{
+            width:100%;
+        }
+    }
+}
+
+
+
+#section_record{
+    #graph{             //v1.0.0 only
+        display:none;
+    }
+
+    #data-results{
+        height:400px;
+        overflow: scroll;
+    }
+}
+#btn-take-sample{
+    width: 120px;
+    height: 60px;
+    position: fixed;
+    bottom: 20px;
+    right:20px;
+    z-index:10;
+    font-size:20px;
+}
+
+#data-results table{
+    height: auto;
+}
+.flot-x-axis,.flot-y-axis{
+    color:white;
+}
+#data-results{
+    color:white;
+}

@@ -1,0 +1,29 @@
+
+  <!-- control start -->
+    <div class="px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+        <div id="debug" class="hidden">
+            <button id="btn-initialize-ble" class="active btn btn-block btn-success">Initialize Bluetooth</button>
+            <button id="btn-request-location" class="hidden btn btn-block btn-success">Request Location</button>
+            <button id="btn-request-permission" class="hidden btn btn-block btn-success">Request Permission</button>
+            <button id="btn-start-scan" class="hidden btn btn-block btn-success">Start Scan</button>
+            <button id="btn-stop-scan" class="hidden btn btn-block btn-success">Stop Scan</button>
+            <div id="devices" class="row">
+            </div>
+            <div id="services" class="row"> 
+            </div>
+            <div id="control" class="row">
+
+                <input type="text" id="field-write" />
+                <button id="btn-write" class="btn btn-block btn-info">Write</button>
+                <button id="btn-read" class="btn btn-block btn-info">Read</button>
+            </div>
+            <textarea id="debug_raw_data"  rows="20" style="width:100%;">
+                
+            </textarea>
+            <div id="result">
+                <!-- create elements when read success-->
+            </div>
+        </div>
+    </div>
+
+	<!-- control end -->
